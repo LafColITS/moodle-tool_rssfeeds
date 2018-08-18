@@ -15,15 +15,34 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ *
  * @package   tool_rssfeeds
  * @copyright 2018 Lafayette College ITS
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die;
+namespace tool_rssfeeds\privacy;
 
-$string['deletefeedconfirm'] = 'Delete this feed globally and remove it from all block instances?';
-$string['feedowner'] = 'Owner';
-$string['pluginname'] = 'Manage all RSS feeds';
-$string['privacy:metadata'] = 'The RSS feed tool only shows data stored in other locations.';
-$string['unused'] = 'Not used in any courses';
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * Privacy subsystem for report_roster implementing null_provider.
+ *
+ * @copyright  2018 Lafayette College ITS
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    // This trait must be included.
+    use \core_privacy\local\legacy_polyfill;
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function _get_reason() {
+        return 'privacy:metadata';
+    }
+}
