@@ -48,6 +48,11 @@ class helper {
                 continue;
             }
             foreach ($configdata->rssid as $feed) {
+                // Deleted rss feeds are not automatically removed from downstream
+                // block instances.
+                if ( ! array_key_exists($feed, $rssfeeds)) {
+                    continue;
+                }
                 $rssfeeds[$feed]->courses[$block->courseid] = $block->fullname;
             }
         }
