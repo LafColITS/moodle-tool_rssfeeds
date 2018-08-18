@@ -26,7 +26,15 @@ require_once($CFG->libdir.'/adminlib.php');
 // Ensure the user can be here.
 require_login();
 
+$deleterssid = optional_param('deleterssid', 0, PARAM_INT);
+
 admin_externalpage_setup('toolrssfeeds');
+
+// Process requested deletion.
+if ($deleterssid && confirm_sesskey()) {
+    \tool_rssfeeds\helper::delete_feed($deleterssid);
+    redirect($PAGE->url, get_string('feeddeleted', 'block_rss_client'));
+}
 
 $feeds = \tool_rssfeeds\helper::get_feeds();
 
