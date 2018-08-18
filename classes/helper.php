@@ -56,7 +56,11 @@ class helper {
 
     public static function display($feeds) {
         $table = new \html_table();
-        $table->head = array(get_string('feedurl', 'block_rss_client'), get_string('courses'));
+        $table->head = array(
+            get_string('feedurl', 'block_rss_client'),
+            get_string('feedowner', 'tool_rssfeeds'),
+            get_string('courses')
+        );
         foreach ($feeds as $feed) {
             $feedurl = \html_writer::link(
                 new \moodle_url($feed->url),
@@ -69,7 +73,9 @@ class helper {
                     $fullname
                 );
             }
-            $table->data[] = array($feedurl, implode(", ", $courses));
+            $user = \core_user::get_user($feed->userid);
+            $userprofile = new \moodle_url('/user/profile', array('id' => $feed->userid));
+            $table->data[] = array($feedurl, \html_writer::link($userprofile, fullname($user)), \html_writer::alist($courses));
         }
         return $table;
     }
