@@ -29,6 +29,7 @@ require_login();
 $deleterssid = optional_param('deleterssid', 0, PARAM_INT);
 
 admin_externalpage_setup('toolrssfeeds');
+$PAGE->set_heading(get_string('pluginname', 'tool_rssfeeds'));
 
 // Process requested deletion.
 if ($deleterssid && confirm_sesskey()) {

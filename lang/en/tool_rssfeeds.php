@@ -24,5 +24,5 @@ defined('MOODLE_INTERNAL') || die;
 
 $string['deletefeedconfirm'] = 'Delete this feed globally and remove it from all block instances?';
 $string['feedowner'] = 'Owner';
-$string['pluginname'] = 'RSS feeds by course';
+$string['pluginname'] = 'Manage all RSS feeds';
 $string['unused'] = 'Not used in any courses';
