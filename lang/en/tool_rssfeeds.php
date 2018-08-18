@@ -24,3 +24,4 @@ defined('MOODLE_INTERNAL') || die;
 
 $string['feedowner'] = 'Owner';
 $string['pluginname'] = 'RSS feeds by course';
+$string['unused'] = 'Not used in any courses';

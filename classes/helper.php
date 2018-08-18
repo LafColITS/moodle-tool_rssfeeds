@@ -78,9 +78,10 @@ class helper {
                     $fullname
                 );
             }
+            $coursedisplay = empty($courses) ? get_string('unused', 'tool_rssfeeds') : \html_writer::alist($courses);
             $user = \core_user::get_user($feed->userid);
             $userprofile = new \moodle_url('/user/profile', array('id' => $feed->userid));
-            $table->data[] = array($feedurl, \html_writer::link($userprofile, fullname($user)), \html_writer::alist($courses));
+            $table->data[] = array($feedurl, \html_writer::link($userprofile, fullname($user)), $coursedisplay);
         }
         return $table;
     }
