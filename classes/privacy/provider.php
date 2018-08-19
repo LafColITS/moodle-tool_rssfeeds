@@ -26,7 +26,7 @@ namespace tool_rssfeeds\privacy;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy subsystem for report_roster implementing null_provider.
+ * Privacy subsystem for tool_rssfeeds implementing null_provider.
  *
  * @copyright  2018 Lafayette College ITS
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later

@@ -26,7 +26,18 @@ namespace tool_rssfeeds;
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Helper functions for tool_rssfeeds.
+ *
+ * @copyright  2018 Lafayette College ITS
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class helper {
+    /**
+     * Deletes a given RSS feed and removes it from any blocks which included it.
+     *
+     * @param int $feedid The id of the RSS feed.
+     */
     public static function delete_feed($feedid) {
         global $DB;
 
@@ -50,6 +61,12 @@ class helper {
         return;
     }
 
+    /**
+     * Returns an individual RSS feed.
+     *
+     * @param int $feedid The id of the RSS feed.
+     * @return array
+     */
     public static function get_feed($feedid) {
         global $DB;
 
@@ -57,6 +74,13 @@ class helper {
         return self::get_block_instances($rssfeed);
     }
 
+    /**
+     * Returns an array all RSS feeds. Each array item includes the metadata
+     * from {block_rss_client}, plus two arrays: courses and instances.
+     *
+     * @param int $feedid The id of the RSS feed.
+     * @return array
+     */
     public static function get_feeds() {
         global $DB;
 
@@ -66,8 +90,12 @@ class helper {
     }
 
     /**
-     * Given an array of RSS feeds, get the block instances for each feed.
-     * @param Array $feeds RSS feeds.
+     * Given an array of RSS feeds, get the courses and block instances for each feed. The
+     * courses array includes course full names, indexed by course id. The instances array
+     * is a simple array of block instance ids.
+     *
+     * @param array $feeds RSS feeds.
+     * @return array
      */
     private static function get_block_instances($feeds) {
         global $DB;
@@ -103,6 +131,12 @@ class helper {
         return $feeds;
     }
 
+    /**
+     * Create the table to display the list of RSS feeds.
+     *
+     * @param array $feeds RSS feeds.
+     * @return \html_table
+     */
     public static function display($feeds) {
         global $OUTPUT;
 
