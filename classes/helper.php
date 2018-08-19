@@ -87,7 +87,7 @@ class helper {
 
         foreach ($blocks as $block) {
             $configdata = unserialize(base64_decode($block->configdata));
-            if (!is_array($configdata->rssid)) {
+            if (!is_object($configdata) || !is_array($configdata->rssid)) {
                 continue;
             }
             foreach ($configdata->rssid as $feed) {
