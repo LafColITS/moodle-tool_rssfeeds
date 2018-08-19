@@ -22,8 +22,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2018081700;
+$plugin->version   = 2018081900;
 $plugin->requires  = 2017051500;
 $plugin->component = 'tool_rssfeeds';
-$plugin->maturity  = MATURITY_BETA;
-$plugin->release   = 'v0.0.1';
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = 'v1.0.0';
