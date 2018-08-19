@@ -7,7 +7,7 @@ This admin tool allows managers to view all RSS feeds on a Moodle site. It shows
 
 Requirements
 ------------
-- Moodle 3.5 (build 2017051500 or later)
+- Moodle 3.3 (build 2017051500 or later)
 
 Installation
 ------------
