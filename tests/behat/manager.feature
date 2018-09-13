@@ -44,7 +44,7 @@ Feature: An admin can manage RSS feeds sitewide
     Then I should see "News from Moodle"
     Given I log out
     And I log in as "admin"
-    When I navigate to "Manage all RSS feeds" node in "Site administration > Reports"
+    When I navigate to "Reports > Manage all RSS feeds" in site administration
     Then I should see "docs.moodle.org"
     And I should see "Jacob Grimm"
     And I should see "Fairy Tales"
