@@ -75,10 +75,9 @@ class helper {
     }
 
     /**
-     * Returns an array all RSS feeds. Each array item includes the metadata
+     * Returns an array of all RSS feeds. Each array item includes the metadata
      * from {block_rss_client}, plus two arrays: courses and instances.
      *
-     * @param int $feedid The id of the RSS feed.
      * @return array
      */
     public static function get_feeds() {
@@ -90,6 +89,8 @@ class helper {
     }
 
     /**
+     * Get all RSS block instances for given feeds.
+     *
      * Given an array of RSS feeds, get the courses and block instances for each feed. The
      * courses array includes course full names, indexed by course id. The instances array
      * is a simple array of block instance ids.
@@ -135,7 +136,7 @@ class helper {
      * Create the table to display the list of RSS feeds.
      *
      * @param array $feeds RSS feeds.
-     * @return \html_table
+     * @return html_table
      */
     public static function display($feeds) {
         global $OUTPUT;

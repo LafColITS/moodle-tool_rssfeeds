@@ -15,6 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Privacy implementation for tool_rssfeeds.
  *
  * @package   tool_rssfeeds
  * @copyright 2018 Lafayette College ITS
