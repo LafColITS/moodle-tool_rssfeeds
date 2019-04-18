@@ -97,7 +97,7 @@ class tool_rssfeeds_testcase extends advanced_testcase {
             'shortname' => "second",
         ));
 
-        // Add a couple blocks.
+        // Add a couple RSS blocks.
         $configdata = new stdClass;
         $configdata->displaydescription = 0;
         $configdata->shownumentries = 2;
@@ -119,6 +119,18 @@ class tool_rssfeeds_testcase extends advanced_testcase {
         ];
         $DB->insert_record('block_instances', $instance);
         $instance->parentcontextid = \context_course::instance($this->secondcourse->id)->id;
+        $DB->insert_record('block_instances', $instance);
+
+        // Add a non-RSS block.
+        $instance = (object)[
+            'blockname' => 'course_summary',
+            'parentcontextid' => \context_course::instance($this->firstcourse->id)->id,
+            'showinsubcontexts' => 0,
+            'pagetypepattern' => 'course-view-*',
+            'defaultweight' => 0,
+            'timecreated' => 1,
+            'timemodified' => 1,
+        ];
         $DB->insert_record('block_instances', $instance);
     }
 
