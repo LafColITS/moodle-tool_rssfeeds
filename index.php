@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Main administration page for the tool. 
+ * Main administration page for the tool.
  *
  * @package   tool_rssfeeds
  * @copyright 2018 Lafayette College ITS
