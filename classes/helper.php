@@ -162,7 +162,7 @@ class helper {
             }
             $coursedisplay = empty($courses) ? get_string('unused', 'tool_rssfeeds') : \html_writer::alist($courses);
             $user = \core_user::get_user($feed->userid);
-            $userprofile = new \moodle_url('/user/profile', array('id' => $feed->userid));
+            $userprofile = new \moodle_url('/user/profile.php?id=' . $feed->userid);
 
             // Build delete action.
             $deleteurl = new \moodle_url('/admin/tool/rssfeeds/index.php?deleterssid=' . $feed->id . '&sesskey=' . sesskey());
