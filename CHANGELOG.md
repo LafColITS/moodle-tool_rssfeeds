@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.0 (January 15, 2020)
+
+- [Improvement] Better link to user profile (thanks @lucaboesch)
+- Drop Moodle 3.4-3.5 support
+
 ## 3.4.1 (May 18, 2019)
 
 - Code cleanup
