@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Change default branch to "main"
+- Update CI tool to version 3
+- Dropped support for Moodle 3.6
+
 ## 3.6.0 (January 15, 2020)
 
 - [Improvement] Better link to user profile (thanks @lucaboesch)
