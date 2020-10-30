@@ -52,7 +52,7 @@ class tool_rssfeeds_testcase extends advanced_testcase {
     /**
      * General setup for PHPUnit testing
      */
-    protected function setUp() {
+    protected function setUp(): void {
         global $DB;
 
         $this->resetAfterTest(true);
