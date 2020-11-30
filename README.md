@@ -1,7 +1,7 @@
 Manage all RSS feeds
 ====================
 
-[![Build Status](https://travis-ci.org/LafColITS/moodle-tool_rssfeeds.svg?branch=master)](https://travis-ci.org/LafColITS/moodle-tool_rssfeeds)
+![Moodle Plugin CI](https://github.com/LafColITS/moodle-tool_rssfeeds/workflows/Moodle%20Plugin%20CI/badge.svg)
 
 This admin tool allows managers to view all RSS feeds on a Moodle site. It shows who owns the feed, which courses have the feed exposed via an RSS block, and gives the manager the option to globally delete the feed.
 
