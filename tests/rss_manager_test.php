@@ -165,9 +165,9 @@ class tool_rssfeeds_testcase extends advanced_testcase {
         $this->assertInstanceOf('html_table', $table);
         $this->assertEquals(2, count($table->data));
         $this->assertEquals('Not used in any courses', $table->data[0][2]);
-        $this->assertContains('End User', $table->data[1][1]);
-        $this->assertContains('first course', $table->data[1][2]);
-        $this->assertContains('second course', $table->data[1][2]);
+        $this->assertStringContainsString('End User', $table->data[1][1]);
+        $this->assertStringContainsString('first course', $table->data[1][2]);
+        $this->assertStringContainsString('second course', $table->data[1][2]);
     }
 
     /**
