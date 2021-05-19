@@ -6,6 +6,7 @@
 - Update CI tool to version 3
 - Dropped support for Moodle 3.6-3.8
 - Migrate CI builds to Github Actions
+- Update PHPUnit test
 
 ## 3.6.0 (January 15, 2020)
 
