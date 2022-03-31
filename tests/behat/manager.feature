@@ -16,7 +16,7 @@ Feature: An admin can manage RSS feeds sitewide
       | course     | user   | role           |
       | fairytales | jgrimm | editingteacher |
       | dictionary | jgrimm | editingteacher |
-    And I enable "course_summary" "block" plugin
+    And I enable "rss_client" "block" plugin
 
   @javascript
   Scenario: An admin views a report
