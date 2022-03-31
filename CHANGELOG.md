@@ -4,7 +4,7 @@
 
 - Change default branch to "main"
 - Update CI tool to version 3
-- Dropped support for Moodle 3.6-3.8
+- Dropped support for Moodle 3.6-3.11
 - Migrate CI builds to Github Actions
 - Update PHPUnit test
 
