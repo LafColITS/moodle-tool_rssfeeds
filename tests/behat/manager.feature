@@ -4,8 +4,7 @@ Feature: An admin can manage RSS feeds sitewide
   As an admin
   I need to visit the RSS feeds report under Admin > Reports
 
-  @javascript
-  Scenario: An admin views a report
+  Background:
     Given the following "courses" exist:
       | fullname            | shortname  |
       | Grimm's Fairy Tales | fairytales |
@@ -17,6 +16,10 @@ Feature: An admin can manage RSS feeds sitewide
       | course     | user   | role           |
       | fairytales | jgrimm | editingteacher |
       | dictionary | jgrimm | editingteacher |
+    And I enable "rss_client" "block" plugin
+
+  @javascript
+  Scenario: An admin views a report
     And I log in as "jgrimm"
     And I am on "Grimm's Fairy Tales" course homepage with editing mode on
     And I add the "Remote RSS feeds" block
