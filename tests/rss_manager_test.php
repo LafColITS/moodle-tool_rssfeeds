@@ -59,10 +59,10 @@ class tool_rssfeeds_testcase extends advanced_testcase {
 
         // Create a test user.
         $this->enduser = $this->getDataGenerator()->create_user(array(
-            'username'  => 'enduser',
+            'username' => 'enduser',
             'firstname' => 'End',
-            'lastname'  => 'User',
-            'email'     => 'enduser@example.com'
+            'lastname' => 'User',
+            'email' => 'enduser@example.com'
         ));
 
         // Create an RSS feed for the guest user.
