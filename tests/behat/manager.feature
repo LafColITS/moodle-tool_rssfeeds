@@ -22,24 +22,22 @@ Feature: An admin can manage RSS feeds sitewide
   Scenario: An admin views a report
     And I log in as "jgrimm"
     And I am on "Grimm's Fairy Tales" course homepage with editing mode on
-    And I add the "Remote RSS feeds" block
-    And I configure the "Remote news feed" block
+    And I add the "Remote RSS feeds..." block
     And I follow "Add/edit feeds"
     And I press "Add a new feed"
     And I set the following fields to these values:
-      | url            | http://docs.moodle.org |
+      | url            | https://docs.moodle.org/401/en/Main_page |
       | preferredtitle | Feed 1                 |
     And I press "Add a new feed"
     And I am on "Grimm's Fairy Tales" course homepage
-    And I configure the "Remote news feed" block
+    And I add the "Remote RSS feeds..." block
     And I set the following fields to these values:
       | config_title   | News from Moodle |
       | config_rssid[] | Feed 1           |
     When I press "Save changes"
     Then I should see "News from Moodle"
     Given I am on "Grimm's Dictionary" course homepage
-    And I add the "Remote RSS feeds" block
-    And I configure the "Remote news feed" block
+    And I add the "Remote RSS feeds..." block
     And I set the following fields to these values:
       | config_title   | News from Moodle |
       | config_rssid[] | Feed 1           |

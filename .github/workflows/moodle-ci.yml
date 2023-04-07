@@ -36,12 +36,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0']
-        moodle-branch: ['MOODLE_400_STABLE', 'MOODLE_401_STABLE', 'master']
+        php: ['8.0', '8.1']
+        moodle-branch: ['master']
         database: [pgsql, mariadb]
-        exclude:
-          - {moodle-branch: 'master', php: '7.4', database: 'pgsql'}
-          - {moodle-branch: 'master', php: '7.4', database: 'mariadb'}
 
     steps:
       - name: Check out repository code
