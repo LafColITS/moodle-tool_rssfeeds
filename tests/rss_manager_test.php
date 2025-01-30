@@ -36,7 +36,7 @@ require_once($CFG->dirroot . '/blocks/rss_client/block_rss_client.php');
  * @copyright 2018 Lafayette College ITS
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class tool_rssfeeds_testcase extends advanced_testcase {
+class tool_rssfeeds_rss_manager_test extends advanced_testcase {
 
     /** @var int The id for feed1 */
     private $guestfeedid;
