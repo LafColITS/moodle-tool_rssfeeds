@@ -24,8 +24,6 @@
 
 namespace tool_rssfeeds;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Helper functions for tool_rssfeeds.
  *
@@ -42,7 +40,7 @@ class helper {
         global $DB;
 
         $feed = self::get_feed($feedid);
-        $DB->delete_records('block_rss_client', array('id' => $feedid));
+        $DB->delete_records('block_rss_client', ['id' => $feedid]);
 
         // Reprocess block configdata.
         if (empty($feed[$feedid]->instances)) {
@@ -50,7 +48,7 @@ class helper {
         }
 
         foreach ($feed[$feedid]->instances as $instance) {
-            $block = $DB->get_record('block_instances', array('id' => $instance));
+            $block = $DB->get_record('block_instances', ['id' => $instance]);
             $configdata = unserialize(base64_decode($block->configdata));
             if (is_array($configdata->rssid) && ($key = array_search($feedid, $configdata->rssid)) !== false) {
                 unset($configdata->rssid[$key]);
@@ -70,7 +68,7 @@ class helper {
     public static function get_feed($feedid) {
         global $DB;
 
-        $rssfeed = $DB->get_records('block_rss_client', array('id' => $feedid));
+        $rssfeed = $DB->get_records('block_rss_client', ['id' => $feedid]);
         return self::get_block_instances($rssfeed);
     }
 
@@ -103,8 +101,8 @@ class helper {
 
         // Prep the items in the feeds array. We need to store course ids and block instance ids.
         foreach ($feeds as $id => $feed) {
-            $feeds[$id]->courses = array();
-            $feeds[$id]->instances = array();
+            $feeds[$id]->courses = [];
+            $feeds[$id]->instances = [];
         }
 
         // Get all the block instances.
@@ -112,7 +110,7 @@ class helper {
             FROM {course} c INNER JOIN {context} ctx ON c.id=ctx.instanceid INNER JOIN
             {block_instances} bi ON ctx.id=bi.parentcontextid WHERE ctx.contextlevel=50
             AND bi.blockname=?";
-        $blocks = $DB->get_records_sql($blocksql, array('rss_client'));
+        $blocks = $DB->get_records_sql($blocksql, ['rss_client']);
 
         foreach ($blocks as $block) {
             $configdata = unserialize(base64_decode($block->configdata));
@@ -142,21 +140,21 @@ class helper {
         global $OUTPUT;
 
         $table = new \html_table();
-        $table->head = array(
+        $table->head = [
             get_string('feedurl', 'block_rss_client'),
             get_string('feedowner', 'tool_rssfeeds'),
             get_string('courses'),
-            get_string('actions')
-        );
+            get_string('actions'),
+        ];
         foreach ($feeds as $feed) {
             $feedurl = \html_writer::link(
                 new \moodle_url($feed->url),
                 $feed->url
             );
-            $courses = array();
+            $courses = [];
             foreach ($feed->courses as $id => $fullname) {
                 $courses[] = \html_writer::link(
-                    new \moodle_url('/course/view.php', array('id' => $id)),
+                    new \moodle_url('/course/view.php', ['id' => $id]),
                     $fullname
                 );
             }
@@ -170,7 +168,7 @@ class helper {
             $deleteaction = $OUTPUT->action_icon(
                 $deleteurl, $deleteicon, new \confirm_action(get_string('deletefeedconfirm', 'tool_rssfeeds')));
 
-            $table->data[] = array($feedurl, \html_writer::link($userprofile, fullname($user)), $coursedisplay, $deleteaction);
+            $table->data[] = [$feedurl, \html_writer::link($userprofile, fullname($user)), $coursedisplay, $deleteaction];
         }
         return $table;
     }

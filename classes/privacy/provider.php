@@ -24,8 +24,6 @@
 
 namespace tool_rssfeeds\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Privacy subsystem for tool_rssfeeds implementing null_provider.
  *

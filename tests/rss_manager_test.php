@@ -22,6 +22,10 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace tool_rssfeeds;
+
+use stdClass;
+
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
@@ -36,7 +40,7 @@ require_once($CFG->dirroot . '/blocks/rss_client/block_rss_client.php');
  * @copyright 2018 Lafayette College ITS
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class tool_rssfeeds_rss_manager_test extends advanced_testcase {
+final class rss_manager_test extends \advanced_testcase {
 
     /** @var int The id for feed1 */
     private $guestfeedid;
@@ -53,55 +57,57 @@ class tool_rssfeeds_rss_manager_test extends advanced_testcase {
      * General setup for PHPUnit testing
      */
     protected function setUp(): void {
+        parent::setUp();
+
         global $DB;
 
         $this->resetAfterTest(true);
 
         // Create a test user.
-        $this->enduser = $this->getDataGenerator()->create_user(array(
+        $this->enduser = $this->getDataGenerator()->create_user([
             'username' => 'enduser',
             'firstname' => 'End',
             'lastname' => 'User',
-            'email' => 'enduser@example.com'
-        ));
+            'email' => 'enduser@example.com',
+        ]);
 
         // Create an RSS feed for the guest user.
-        $record = (object) array(
+        $record = (object) [
             'userid' => 1,
             'title' => 'Feed 1',
             'preferredtitle' => '',
             'description' => 'Feed 1 belongs to the guest user.',
             'shared' => 0,
             'url' => 'http://example.com/feed',
-        );
+        ];
         $this->guestfeedid = $DB->insert_record('block_rss_client', $record);
 
         // Create an RSS feed for enduser.
-        $record = (object) array(
+        $record = (object) [
             'userid' => $this->enduser->id,
             'title' => 'Enduser Feed',
             'preferredtitle' => '',
             'description' => 'End User owns this feed.',
             'shared' => 0,
             'url' => 'http://example.com/atom',
-        );
+        ];
         $this->enduserfeedid = $DB->insert_record('block_rss_client', $record);
 
         // Create a couple courses.
-        $this->firstcourse = $this->getDataGenerator()->create_course(array(
+        $this->firstcourse = $this->getDataGenerator()->create_course([
             'fullname' => "A first course",
             'shortname' => "first",
-        ));
-        $this->secondcourse = $this->getDataGenerator()->create_course(array(
+        ]);
+        $this->secondcourse = $this->getDataGenerator()->create_course([
             'fullname' => "A second course",
             'shortname' => "second",
-        ));
+        ]);
 
         // Add a couple RSS blocks.
         $configdata = new stdClass;
         $configdata->displaydescription = 0;
         $configdata->shownumentries = 2;
-        $configdata->rssid = array($this->enduserfeedid);
+        $configdata->rssid = [$this->enduserfeedid];
         $configdata->title = '';
         $configdata->block_rss_client_show_channel_link = 0;
         $configdata->block_rss_client_show_channel_image = 0;
@@ -137,9 +143,9 @@ class tool_rssfeeds_rss_manager_test extends advanced_testcase {
     /**
      * Test the get_feed helper function.
      */
-    public function test_get_feed() {
+    public function test_get_feed(): void {
         // Confirm that we can get just the feed we want.
-        $feed = \tool_rssfeeds\helper::get_feed($this->guestfeedid);
+        $feed = helper::get_feed($this->guestfeedid);
         $this->assertEquals(1, count($feed));
         $this->assertEquals(1, $feed[$this->guestfeedid]->userid);
         $this->assertEquals('Feed 1', $feed[$this->guestfeedid]->title);
@@ -149,9 +155,9 @@ class tool_rssfeeds_rss_manager_test extends advanced_testcase {
     /**
      * Test the get_feeds helper function.
      */
-    public function test_get_feeds() {
+    public function test_get_feeds(): void {
         // Confirm that we can get all feeds.
-        $feeds = \tool_rssfeeds\helper::get_feeds();
+        $feeds = helper::get_feeds();
         $this->assertEquals(2, count($feeds));
         $this->assertEquals('http://example.com/atom', $feeds[$this->enduserfeedid]->url);
     }
@@ -159,9 +165,9 @@ class tool_rssfeeds_rss_manager_test extends advanced_testcase {
     /**
      * Test the display helper function.
      */
-    public function test_display() {
-        $feeds = \tool_rssfeeds\helper::get_feeds();
-        $table = \tool_rssfeeds\helper::display($feeds);
+    public function test_display(): void {
+        $feeds = helper::get_feeds();
+        $table = helper::display($feeds);
         $this->assertInstanceOf('html_table', $table);
         $this->assertEquals(2, count($table->data));
         $this->assertEquals('Not used in any courses', $table->data[0][2]);
@@ -173,13 +179,13 @@ class tool_rssfeeds_rss_manager_test extends advanced_testcase {
     /**
      * Test the delete_feed helper function.
      */
-    public function test_delete_feed() {
+    public function test_delete_feed(): void {
         global $DB;
 
-        \tool_rssfeeds\helper::delete_feed($this->enduserfeedid);
+        helper::delete_feed($this->enduserfeedid);
         $this->assertEquals(1, $DB->count_records('block_rss_client'));
-        $feeds = \tool_rssfeeds\helper::get_feeds();
-        $table = \tool_rssfeeds\helper::display($feeds);
+        $feeds = helper::get_feeds();
+        $table = helper::display($feeds);
         $this->assertEquals(1, count($table->data));
     }
 }
