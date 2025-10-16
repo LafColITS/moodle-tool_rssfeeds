@@ -120,7 +120,7 @@ class helper {
             foreach ($configdata->rssid as $feed) {
                 // Deleted rss feeds are not automatically removed from downstream
                 // block instances.
-                if ( ! array_key_exists($feed, $feeds)) {
+                if (! array_key_exists($feed, $feeds)) {
                     continue;
                 }
                 $feeds[$feed]->courses[$block->courseid] = $block->fullname;
@@ -166,7 +166,10 @@ class helper {
             $deleteurl = new \moodle_url('/admin/tool/rssfeeds/index.php?deleterssid=' . $feed->id . '&sesskey=' . sesskey());
             $deleteicon = new \pix_icon('t/delete', get_string('delete'));
             $deleteaction = $OUTPUT->action_icon(
-                $deleteurl, $deleteicon, new \confirm_action(get_string('deletefeedconfirm', 'tool_rssfeeds')));
+                $deleteurl,
+                $deleteicon,
+                new \confirm_action(get_string('deletefeedconfirm', 'tool_rssfeeds'))
+            );
 
             $table->data[] = [$feedurl, \html_writer::link($userprofile, fullname($user)), $coursedisplay, $deleteaction];
         }

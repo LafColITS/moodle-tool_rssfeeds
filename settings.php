@@ -27,7 +27,8 @@ defined('MOODLE_INTERNAL') || die;
 if ($hassiteconfig) {
     $ADMIN->add(
         'reports',
-        new admin_externalpage('toolrssfeeds',
+        new admin_externalpage(
+            'toolrssfeeds',
             get_string('pluginname', 'tool_rssfeeds'),
             "$CFG->wwwroot/$CFG->admin/tool/rssfeeds/index.php",
             'moodle/site:config'

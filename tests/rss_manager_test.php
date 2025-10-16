@@ -41,7 +41,6 @@ require_once($CFG->dirroot . '/blocks/rss_client/block_rss_client.php');
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 final class rss_manager_test extends \advanced_testcase {
-
     /** @var int The id for feed1 */
     private $guestfeedid;
     /** @var stdClass The enduser */
@@ -104,7 +103,7 @@ final class rss_manager_test extends \advanced_testcase {
         ]);
 
         // Add a couple RSS blocks.
-        $configdata = new stdClass;
+        $configdata = new stdClass();
         $configdata->displaydescription = 0;
         $configdata->shownumentries = 2;
         $configdata->rssid = [$this->enduserfeedid];
