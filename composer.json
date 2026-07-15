@@ -1,0 +1,12 @@
+{
+    "name": "lafayettecollege/moodle-tool_rssfeeds",
+    "description": "This admin tool allows managers to view all RSS feeds on a Moodle site. It shows who owns the feed, which courses have the feed exposed via an RSS block, and gives the manager the option to globally delete the feed.",
+    "type": "moodle-tool",
+    "require": {
+        "composer/installers": "*"
+    },
+    "license": "GPL-3.0-or-later",
+    "extra": {
+        "installer-name": "rssfeeds"
+    }
+}

@@ -1,12 +1,13 @@
 # Changelog
 
-## Unreleased
+## 4.5.0 (July 15, 2026)
 
 - Change default branch to "main"
 - Update CI tool to version 3
-- Dropped support for Moodle 3.6-4.1
+- Dropped support for Moodle 3.6-4.4
 - Migrate CI builds to Github Actions
 - Update PHPUnit test
+- Added composer support
 
 ## 3.6.0 (January 15, 2020)
 
