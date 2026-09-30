@@ -36,7 +36,8 @@ require_once($CFG->dirroot . '/blocks/rss_client/block_rss_client.php');
 /**
  * Class for the PHPunit tests for RSS feed manager.
  *
- * @package    tool_rssfeeds
+ * @package   tool_rssfeeds
+ * @covers    \tool_rssfeeds\helper
  * @copyright 2018 Lafayette College ITS
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
